@@ -282,13 +282,6 @@
   }
 
   /* Navigation buttons */
-  .nav-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 28px;
-    gap: 12px;
-  }
   .btn {
     font-family: 'Barlow', sans-serif;
     font-weight: 700;
@@ -318,6 +311,36 @@
     color: var(--navy);
   }
   .btn-submit:hover { background: var(--gold-light); }
+  .btn-clear {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1.5px solid var(--border);
+    font-size: 12px;
+    padding: 8px 16px;
+    margin-top: 10px;
+    align-self: center;
+  }
+  .btn-clear:hover { background: var(--off-white); color: var(--error); border-color: var(--error); }
+  .nav-row {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 28px;
+    gap: 12px;
+  }
+  .nav-row-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .nav-row-clear {
+    display: flex;
+    justify-content: center;
+    padding-top: 4px;
+    border-top: 1px solid var(--border);
+    margin-top: 2px;
+  }
 
   /* Validation error */
   .field-error {
@@ -489,7 +512,7 @@
     .section-card { padding: 20px 18px; }
     .form-header { padding: 20px 18px; }
     .form-header h1 { font-size: 20px; }
-    .nav-row { flex-direction: column-reverse; }
+    .nav-row-main { flex-direction: column-reverse; }
     .btn { width: 100%; text-align: center; }
   }
 </style>
@@ -640,8 +663,13 @@
     </div>
 
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-1', 4)">← Back</button>
-      <button class="btn btn-primary" onclick="validateAndAdvance('section-2', 'section-3-dh')">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-1', 4)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-2', 'section-3-dh')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-2')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -765,8 +793,13 @@
     </div><!-- /section-card -->
 
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-2', 10)">← Back</button>
-      <button class="btn btn-primary" onclick="validateAndAdvance('section-3-dh', 'section-4-dh')">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-2', 10)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-3-dh', 'section-4-dh')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-3-dh')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -868,8 +901,13 @@
     </div><!-- /section-card -->
 
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-3-dh', 20)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-5-dh', 40)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-3-dh', 20)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-4-dh', 'section-5-dh')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-4-dh')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -1012,8 +1050,13 @@
     </div><!-- /section-card -->
 
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-4-dh', 30)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-6-dh', 50)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-4-dh', 30)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-5-dh', 'section-6-dh')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-5-dh')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -1063,8 +1106,13 @@
     </div><!-- /section-card -->
 
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-5-dh', 40)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-7-dh', 55)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-5-dh', 40)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-6-dh', 'section-7-dh')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-6-dh')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -1208,8 +1256,13 @@
     </div><!-- /section-card -->
 
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-6-dh', 50)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-8-dh', 62)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-6-dh', 50)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-7-dh', 'section-8-dh')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-7-dh')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -1285,8 +1338,13 @@
     </div><!-- /section-card -->
 
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-7-dh', 60)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-9-dh', 68)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-7-dh', 60)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-8-dh', 'section-9-dh')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-8-dh')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -1383,8 +1441,13 @@
     </div><!-- /section-card -->
 
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-8-dh', 65)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-10-dh', 75)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-8-dh', 65)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-9-dh', 'section-10-dh')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-9-dh')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -1504,8 +1567,13 @@
     </div><!-- /section-card -->
 
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-9-dh', 70)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-11-dh', 82)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-9-dh', 70)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-10-dh', 'section-11-dh')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-10-dh')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -1578,8 +1646,13 @@
     </div><!-- /section-card -->
 
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-10-dh', 78)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-12-dh', 90)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-10-dh', 78)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-11-dh', 'section-12-dh')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-11-dh')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -1641,8 +1714,13 @@
     </div><!-- /section-card -->
 
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-11-dh', 85)">← Back</button>
-      <button class="btn btn-primary" id="s12-next-btn" onclick="showSection('section-pd', 95)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-11-dh', 85)">← Back</button>
+        <button class="btn btn-primary" id="s12-next-btn" onclick="validateAndAdvance('section-12-dh', 'section-pd')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-12-dh')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -1778,28 +1856,19 @@
           </div>
         </div>
       </div>
-      <div class="conditional-field" id="p2-plc-ts-followup">
-        <div class="field-group" style="margin-bottom:14px;">
-          <label>What kind of troubleshooting is required?</label>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="p2_s7_plc_ts_type" value="Hardware Only"> Hardware Only</label>
-            <label class="radio-option"><input type="radio" name="p2_s7_plc_ts_type" value="Software Access Required"> Software Access Required</label>
-            <label class="radio-option"><input type="radio" name="p2_s7_plc_ts_type" value="Both"> Both</label>
-          </div>
-        </div>
-        <div class="field-group" style="margin-bottom:0;">
-          <label for="p2-plc-ts-detail">Please elaborate</label>
-          <textarea id="p2-plc-ts-detail" name="p2_s7_plc_ts_detail" placeholder="Provide any additional detail about the troubleshooting requirements..."></textarea>
-        </div>
-      </div>
       <div class="field-group">
         <label for="p2-s7-other-elec">Please provide any other electrical experience required</label>
         <input type="text" id="p2-s7-other-elec" name="p2_s7_other_elec" placeholder="Any additional electrical experience...">
       </div>
     </div>
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-12-dh', 90)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-8b-dh', 92)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-12-dh', 90)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-7b-dh', 'section-8b-dh')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-7b-dh')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -1821,9 +1890,9 @@
           </div>
           <div class="skill-row">
             <div class="skill-row-label">PLC - Troubleshooting</div>
-            <div class="skill-row-col"><input type="radio" name="p2_s8_plc_ts" value="Must Have"></div>
-            <div class="skill-row-col"><input type="radio" name="p2_s8_plc_ts" value="Preference"></div>
-            <div class="skill-row-col"><input type="radio" name="p2_s8_plc_ts" value="Not Needed"></div>
+            <div class="skill-row-col"><input type="radio" name="p2_s8_plc_ts" value="Must Have" onchange="toggleP2DHPLCFollowUp(this.value)"></div>
+            <div class="skill-row-col"><input type="radio" name="p2_s8_plc_ts" value="Preference" onchange="toggleP2DHPLCFollowUp(this.value)"></div>
+            <div class="skill-row-col"><input type="radio" name="p2_s8_plc_ts" value="Not Needed" onchange="toggleP2DHPLCFollowUp(this.value)"></div>
           </div>
           <div class="skill-row">
             <div class="skill-row-label">PLC - Programming</div>
@@ -1845,14 +1914,41 @@
           </div>
         </div>
       </div>
+
+      <div class="conditional-field" id="p2-dh-plc-ts-followup">
+        <div class="field-group" style="margin-bottom:14px;">
+          <label>What kind of troubleshooting is required?</label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="p2_s8_plc_ts_type" value="Hardware Only"> Hardware Only
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="p2_s8_plc_ts_type" value="Software Access Required"> Software Access Required
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="p2_s8_plc_ts_type" value="Both"> Both
+            </label>
+          </div>
+        </div>
+        <div class="field-group" style="margin-bottom:0;">
+          <label for="p2-s8-plc-ts-detail">Please elaborate</label>
+          <textarea id="p2-s8-plc-ts-detail" name="p2_s8_plc_ts_detail" placeholder="Provide any additional detail about the troubleshooting requirements..."></textarea>
+        </div>
+      </div>
+
       <div class="field-group">
         <label for="p2-s8-brands">Please provide instrumentation brands/types, i.e. Allen Bradley, Siemens etc. as well as software used. Answer "N/A" if no experience required.</label>
         <textarea id="p2-s8-brands" name="p2_s8_brands" placeholder="List brands, types, and software..."></textarea>
       </div>
     </div>
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-7b-dh', 91)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-9b-dh', 93)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-7b-dh', 91)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-8b-dh', 'section-9b-dh')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-8b-dh')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -1946,8 +2042,13 @@
       </div>
     </div>
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-8b-dh', 92)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-10b-dh', 94)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-8b-dh', 92)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-9b-dh', 'section-10b-dh')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-9b-dh')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -2061,8 +2162,13 @@
       </div>
     </div>
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-9b-dh', 93)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-11b-dh', 95)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-9b-dh', 93)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-10b-dh', 'section-11b-dh')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-10b-dh')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -2132,8 +2238,13 @@
       </div>
     </div>
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-10b-dh', 94)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-12b-dh', 96)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-10b-dh', 94)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-11b-dh', 'section-12b-dh')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-11b-dh')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -2182,8 +2293,13 @@
       </div>
     </div>
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-11b-dh', 95)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-pd', 98)">Next → Physical Demands</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-11b-dh', 95)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-12b-dh', 'section-pd')">Next → Physical Demands</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-12b-dh')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -2319,28 +2435,19 @@
           </div>
         </div>
       </div>
-      <div class="conditional-field" id="p2-wfs-plc-ts-followup">
-        <div class="field-group" style="margin-bottom:14px;">
-          <label>What kind of troubleshooting is required?</label>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="p2_s15_plc_ts_type" value="Hardware Only"> Hardware Only</label>
-            <label class="radio-option"><input type="radio" name="p2_s15_plc_ts_type" value="Software Access Required"> Software Access Required</label>
-            <label class="radio-option"><input type="radio" name="p2_s15_plc_ts_type" value="Both"> Both</label>
-          </div>
-        </div>
-        <div class="field-group" style="margin-bottom:0;">
-          <label for="p2-wfs-plc-ts-detail">Please elaborate</label>
-          <textarea id="p2-wfs-plc-ts-detail" name="p2_s15_plc_ts_detail" placeholder="Provide any additional detail about the troubleshooting requirements..."></textarea>
-        </div>
-      </div>
       <div class="field-group">
         <label for="p2-s15-other-elec">Please provide any other electrical experience required</label>
         <input type="text" id="p2-s15-other-elec" name="p2_s15_other_elec" placeholder="Any additional electrical experience...">
       </div>
     </div>
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-20-wfs', 78)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-16b-wfs', 82)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-20-wfs', 78)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-15b-wfs', 'section-16b-wfs')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-15b-wfs')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -2362,9 +2469,9 @@
           </div>
           <div class="skill-row">
             <div class="skill-row-label">PLC - Troubleshooting</div>
-            <div class="skill-row-col"><input type="radio" name="p2_s16_plc_ts" value="Must Have"></div>
-            <div class="skill-row-col"><input type="radio" name="p2_s16_plc_ts" value="Preference"></div>
-            <div class="skill-row-col"><input type="radio" name="p2_s16_plc_ts" value="Not Needed"></div>
+            <div class="skill-row-col"><input type="radio" name="p2_s16_plc_ts" value="Must Have" onchange="toggleP2WFSPLCFollowUp(this.value)"></div>
+            <div class="skill-row-col"><input type="radio" name="p2_s16_plc_ts" value="Preference" onchange="toggleP2WFSPLCFollowUp(this.value)"></div>
+            <div class="skill-row-col"><input type="radio" name="p2_s16_plc_ts" value="Not Needed" onchange="toggleP2WFSPLCFollowUp(this.value)"></div>
           </div>
           <div class="skill-row">
             <div class="skill-row-label">PLC - Programming</div>
@@ -2386,14 +2493,41 @@
           </div>
         </div>
       </div>
+
+      <div class="conditional-field" id="p2-wfs-plc-ts-followup">
+        <div class="field-group" style="margin-bottom:14px;">
+          <label>What kind of troubleshooting is required?</label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="p2_s16_plc_ts_type" value="Hardware Only"> Hardware Only
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="p2_s16_plc_ts_type" value="Software Access Required"> Software Access Required
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="p2_s16_plc_ts_type" value="Both"> Both
+            </label>
+          </div>
+        </div>
+        <div class="field-group" style="margin-bottom:0;">
+          <label for="p2-s16-plc-ts-detail">Please elaborate</label>
+          <textarea id="p2-s16-plc-ts-detail" name="p2_s16_plc_ts_detail" placeholder="Provide any additional detail about the troubleshooting requirements..."></textarea>
+        </div>
+      </div>
+
       <div class="field-group">
         <label for="p2-s16-brands">Please provide instrumentation brands/types, i.e. Allen Bradley, Siemens etc. as well as software used. Answer "N/A" if no experience required.</label>
         <textarea id="p2-s16-brands" name="p2_s16_brands" placeholder="List brands, types, and software..."></textarea>
       </div>
     </div>
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-15b-wfs', 80)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-17b-wfs', 84)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-15b-wfs', 80)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-16b-wfs', 'section-17b-wfs')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-16b-wfs')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -2487,8 +2621,13 @@
       </div>
     </div>
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-16b-wfs', 82)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-18b-wfs', 86)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-16b-wfs', 82)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-17b-wfs', 'section-18b-wfs')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-17b-wfs')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -2602,8 +2741,13 @@
       </div>
     </div>
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-17b-wfs', 84)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-19b-wfs', 88)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-17b-wfs', 84)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-18b-wfs', 'section-19b-wfs')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-18b-wfs')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -2673,8 +2817,13 @@
       </div>
     </div>
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-18b-wfs', 86)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-20b-wfs', 90)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-18b-wfs', 86)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-19b-wfs', 'section-20b-wfs')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-19b-wfs')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -2723,8 +2872,13 @@
       </div>
     </div>
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-19b-wfs', 88)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-pd', 98)">Next → Physical Demands</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-19b-wfs', 88)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-20b-wfs', 'section-pd')">Next → Physical Demands</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-20b-wfs')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -2954,8 +3108,13 @@
     </div><!-- /section-card -->
 
     <div class="nav-row">
-      <button class="btn btn-secondary" id="pd-back-btn" onclick="history.back()">← Back</button>
-      <button class="btn btn-submit" onclick="submitToGoogleSheets()">Submit Form</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" id="pd-back-btn" onclick="goBack()">← Back</button>
+        <button class="btn btn-submit" onclick="validateAndSubmit()">Submit Form</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-pd')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -3042,8 +3201,13 @@
     </div><!-- /section-card -->
 
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-1', 4)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-14-wfs', 15)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-1', 4)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-13-wfs', 'section-14-wfs')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-13-wfs')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -3142,8 +3306,13 @@
     </div><!-- /section-card -->
 
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-13-wfs', 10)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-15-wfs', 22)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-13-wfs', 10)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-14-wfs', 'section-15-wfs')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-14-wfs')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -3297,8 +3466,13 @@
       </div>
     </div>
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-14-wfs', 15)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-16-wfs', 35)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-14-wfs', 15)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-15-wfs', 'section-16-wfs')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-15-wfs')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -3370,8 +3544,13 @@
       </div>
     </div>
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-15-wfs', 28)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-17-wfs', 45)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-15-wfs', 28)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-16-wfs', 'section-17-wfs')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-16-wfs')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -3464,8 +3643,13 @@
       </div>
     </div>
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-16-wfs', 38)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-18-wfs', 55)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-16-wfs', 38)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-17-wfs', 'section-18-wfs')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-17-wfs')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -3578,8 +3762,13 @@
       </div>
     </div>
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-17-wfs', 48)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-19-wfs', 65)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-17-wfs', 48)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-18-wfs', 'section-19-wfs')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-18-wfs')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -3648,8 +3837,13 @@
       </div>
     </div>
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-18-wfs', 58)">← Back</button>
-      <button class="btn btn-primary" onclick="showSection('section-20-wfs', 75)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-18-wfs', 58)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndAdvance('section-19-wfs', 'section-20-wfs')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-19-wfs')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -3706,8 +3900,13 @@
       </div>
     </div>
     <div class="nav-row">
-      <button class="btn btn-secondary" onclick="showSection('section-19-wfs', 68)">← Back</button>
-      <button class="btn btn-primary" id="s20-next-btn" onclick="showSection('section-pd', 95)">Next →</button>
+      <div class="nav-row-main">
+        <button class="btn btn-secondary" onclick="showSection('section-19-wfs', 68)">← Back</button>
+        <button class="btn btn-primary" id="s20-next-btn" onclick="validateAndAdvance('section-20-wfs', 'section-pd')">Next →</button>
+      </div>
+      <div class="nav-row-clear">
+        <button class="btn btn-clear" onclick="clearSection('section-20-wfs')">Clear Section</button>
+      </div>
     </div>
   </div>
 
@@ -3732,8 +3931,64 @@
   // Replace this URL with your Google Apps Script Web App URL once deployed.
   const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpquDjJ7VfneVvu07Y9Cdv80My-PK8knUzAwxqVHC7piH9P8JaQFwk98acpxylAKADsg/exec';
 
+  // ── Clear all inputs in the currently active section ─────────────────
+  function clearSection(sectionId) {
+    const sec = document.getElementById(sectionId);
+    if (!sec) return;
+    // Text inputs, date inputs, textareas
+    sec.querySelectorAll('input[type="text"], input[type="date"], textarea').forEach(el => {
+      el.value = '';
+      el.style.borderColor = '';
+      el.classList.remove('invalid');
+    });
+    // Radio buttons
+    sec.querySelectorAll('input[type="radio"]').forEach(el => {
+      el.checked = false;
+      const opt = el.closest('.radio-option');
+      if (opt) { opt.classList.remove('selected'); opt.style.outline = ''; }
+      const row = el.closest('.skill-row, .priority-row');
+      if (row) { row.style.background = ''; row.style.outline = ''; }
+    });
+    // Checkboxes
+    sec.querySelectorAll('input[type="checkbox"]').forEach(el => {
+      el.checked = false;
+      el.disabled = false;
+      const opt = el.closest('.checkbox-option');
+      if (opt) { opt.classList.remove('checked', 'disabled'); opt.style.outline = ''; }
+    });
+    // Selects
+    sec.querySelectorAll('select').forEach(el => {
+      el.selectedIndex = 0;
+      el.style.borderColor = '';
+    });
+    // Hide all conditional fields
+    sec.querySelectorAll('.conditional-field').forEach(el => el.classList.remove('visible'));
+    // Clear all error states
+    sec.querySelectorAll('.field-error').forEach(el => el.classList.remove('visible'));
+    sec.querySelectorAll('.skill-row').forEach(el => el.style.background = '');
+    // Remove any validation banners
+    const banner = document.getElementById(sectionId + '-top-err');
+    if (banner) banner.style.display = 'none';
+    const gridErr = document.getElementById(sectionId + '-grid-err');
+    if (gridErr) gridErr.style.display = 'none';
+    // Reset fit count display
+    const fitCount = document.getElementById('fit-count-display');
+    if (fitCount && sec.contains(fitCount)) fitCount.textContent = '0 selected';
+    // Scroll to top of section
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   // ── Section routing ──────────────────────────────────────────────────
+  let previousSectionId = null;
+  let previousProgressPct = 4;
+
   function showSection(sectionId, progressPct) {
+    // Track which section was active before navigating
+    const current = document.querySelector('.form-section.active');
+    if (current && current.id !== sectionId) {
+      previousSectionId = current.id;
+      previousProgressPct = parseInt(document.getElementById('progress-bar').style.width) || progressPct;
+    }
     document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
     const target = document.getElementById(sectionId);
     if (target) {
@@ -3741,6 +3996,16 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     document.getElementById('progress-bar').style.width = progressPct + '%';
+  }
+
+  function goBack() {
+    if (previousSectionId) {
+      const prev = previousSectionId;
+      const pct  = previousProgressPct;
+      // Unset so double-clicking back doesn't loop
+      previousSectionId = null;
+      showSection(prev, pct);
+    }
   }
 
   // ── Section 1: branch on requisition type ───────────────────────────
@@ -3780,83 +4045,649 @@
     }
   }
 
-  // ── Section 2 & 3 validation ─────────────────────────────────────────
-  function validateAndAdvance(currentSectionId, nextSectionId) {
-    if (currentSectionId === 'section-2') {
-      const fields = [
-        { id: 'dh-date',            errorId: 'dh-date-error' },
-        { id: 'dh-company-name',    errorId: 'dh-company-name-error' },
-        { id: 'dh-company-address', errorId: 'dh-company-address-error' },
-        { id: 'dh-main-contact',    errorId: 'dh-main-contact-error' },
-        { id: 'dh-hiring-manager',  errorId: 'dh-hiring-manager-error' },
-        { id: 'dh-hr-contact',      errorId: 'dh-hr-contact-error' },
-        { id: 'dh-maintenance-mgr', errorId: 'dh-maintenance-mgr-error' },
-        { id: 'dh-billing-contact', errorId: 'dh-billing-contact-error' },
-      ];
-      let valid = true;
+  // ── Generic validation helpers ────────────────────────────────────────
 
-      fields.forEach(f => {
-        const el = document.getElementById(f.id);
-        const err = document.getElementById(f.errorId);
-        if (!el.value.trim()) {
-          el.classList.add('invalid');
-          err.classList.add('visible');
-          valid = false;
-        } else {
-          el.classList.remove('invalid');
-          err.classList.remove('visible');
-        }
-      });
-
-      // Radio: PO required
-      const poRequired = document.querySelector('input[name="dh_po_required"]:checked');
-      const poErr = document.getElementById('dh-po-required-error');
-      if (!poRequired) { poErr.classList.add('visible'); valid = false; }
-      else poErr.classList.remove('visible');
-
-      // Radio: Union
-      const union = document.querySelector('input[name="dh_union"]:checked');
-      const unionErr = document.getElementById('dh-union-error');
-      if (!union) { unionErr.classList.add('visible'); valid = false; }
-      else unionErr.classList.remove('visible');
-
-      if (!valid) {
-        document.querySelector('#section-2 .invalid, #section-2 .field-error.visible')
-          ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        return;
+  // Validate text/date/textarea fields; returns false and marks errors if any empty
+  function validateTextFields(sectionId, fieldList) {
+    let valid = true;
+    fieldList.forEach(f => {
+      const el = document.getElementById(f.id);
+      const err = document.getElementById(f.errorId);
+      if (!el || !err) return;
+      if (!el.value.trim()) {
+        el.classList.add('invalid');
+        err.classList.add('visible');
+        valid = false;
+      } else {
+        el.classList.remove('invalid');
+        err.classList.remove('visible');
       }
-      showSection(nextSectionId, 20);
-      return;
-    }
-
-    if (currentSectionId === 'section-3-dh') {
-      let valid = true;
-      const radios = [
-        { name: 'td_drives_values',   errorId: 'td-drives-error' },
-        { name: 'td_workstyle',       errorId: 'td-workstyle-error' },
-        { name: 'td_relationships',   errorId: 'td-relationships-error' },
-        { name: 'td_influence',       errorId: 'td-influence-error' },
-        { name: 'td_thought_process', errorId: 'td-thought-error' },
-      ];
-      radios.forEach(r => {
-        const checked = document.querySelector(`input[name="${r.name}"]:checked`);
-        const err = document.getElementById(r.errorId);
-        if (!checked) { err.classList.add('visible'); valid = false; }
-        else err.classList.remove('visible');
-      });
-      if (!valid) {
-        document.querySelector('#section-3-dh .field-error.visible')
-          ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        return;
-      }
-      showSection(nextSectionId, 30);
-      return;
-    }
-
-    showSection(nextSectionId, 30);
+    });
+    return valid;
   }
 
-  // ── Google Sheets submission (called on final submit) ────────────────
+  // Validate a radio group; returns false and shows error if nothing checked
+  function validateRadio(name, errorId) {
+    const checked = document.querySelector(`input[name="${name}"]:checked`);
+    const err = errorId ? document.getElementById(errorId) : null;
+    if (!checked) {
+      if (err) err.classList.add('visible');
+      // Highlight the radio options visually when no error div exists
+      document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+        const opt = r.closest('.radio-option');
+        if (opt) opt.style.borderColor = 'var(--error)';
+      });
+      return false;
+    }
+    if (err) err.classList.remove('visible');
+    document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+      const opt = r.closest('.radio-option');
+      if (opt) opt.style.borderColor = '';
+    });
+    return true;
+  }
+
+  // Validate a <select> by name; returns false if value is empty
+  function validateSelect(name, errorId) {
+    const el = document.querySelector(`select[name="${name}"]`);
+    const err = errorId ? document.getElementById(errorId) : null;
+    if (!el) return true;
+    if (!el.value) {
+      el.style.borderColor = 'var(--error)';
+      if (err) err.classList.add('visible');
+      return false;
+    }
+    el.style.borderColor = '';
+    if (err) err.classList.remove('visible');
+    return true;
+  }
+
+  // Validate that at least one checkbox in a group is checked
+  function validateCheckboxGroup(name, errorId) {
+    const checked = document.querySelectorAll(`input[name="${name}"]:checked`);
+    const err = errorId ? document.getElementById(errorId) : null;
+    if (checked.length === 0) {
+      if (err) err.classList.add('visible');
+      return false;
+    }
+    if (err) err.classList.remove('visible');
+    return true;
+  }
+
+  // Validate every radio group in a skill grid by radio name list
+  function validateSkillGrid(sectionId, radioNames) {
+    let valid = true;
+    radioNames.forEach(name => {
+      const checked = document.querySelector(`input[name="${name}"]:checked`);
+      if (!checked) {
+        // Highlight the row
+        const firstRadio = document.querySelector(`input[name="${name}"]`);
+        if (firstRadio) {
+          const row = firstRadio.closest('.skill-row');
+          if (row) row.style.background = '#fef2f2';
+        }
+        valid = false;
+      } else {
+        const firstRadio = document.querySelector(`input[name="${name}"]`);
+        if (firstRadio) {
+          const row = firstRadio.closest('.skill-row');
+          if (row) row.style.background = '';
+        }
+      }
+    });
+    return valid;
+  }
+
+  // Show a generic skill-grid error banner inside a section
+  function showSkillGridError(sectionId, show) {
+    let banner = document.getElementById(sectionId + '-skill-error');
+    if (!banner) {
+      banner = document.createElement('div');
+      banner.id = sectionId + '-skill-error';
+      banner.style.cssText = 'color:var(--error);font-size:13px;margin-top:10px;display:none;';
+      banner.textContent = 'Please make a selection for every skill row before continuing.';
+      const card = document.querySelector('#' + sectionId + ' .section-card');
+      if (card) card.appendChild(banner);
+    }
+    banner.style.display = show ? 'block' : 'none';
+  }
+
+  // Scroll to first error in a section
+  function scrollToError(sectionId) {
+    const firstErr = document.querySelector(
+      '#' + sectionId + ' .invalid, #' + sectionId + ' .field-error.visible, #' + sectionId + ' select[style*="var(--error)"]'
+    );
+    if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    else {
+      // Try skill-row highlights
+      const highlightedRow = document.querySelector('#' + sectionId + ' .skill-row[style*="fef2f2"]');
+      if (highlightedRow) highlightedRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  // ── Core validation helpers ─────────────────────────────────────────────
+
+  // Highlight a field with invalid border and return false
+  function markInvalid(el) {
+    if (!el) return;
+    el.style.borderColor = 'var(--error)';
+    el.classList.add('invalid');
+  }
+  function markValid(el) {
+    if (!el) return;
+    el.style.borderColor = '';
+    el.classList.remove('invalid');
+  }
+
+  // Validate a text/date/textarea by element ID — returns true if filled
+  function checkField(id) {
+    const el = document.getElementById(id);
+    if (!el) return true;
+    if (!el.value.trim()) { markInvalid(el); return false; }
+    markValid(el); return true;
+  }
+
+  // Validate a radio group — returns true if something is checked
+  function checkRadio(name) {
+    const checked = document.querySelector(`input[name="${name}"]:checked`);
+    const radios = document.querySelectorAll(`input[name="${name}"]`);
+    if (!checked) {
+      radios.forEach(r => {
+        const opt = r.closest('.radio-option, .priority-row');
+        if (opt) opt.style.outline = '2px solid var(--error)';
+        else r.style.outline = '2px solid var(--error)';
+      });
+      return false;
+    }
+    radios.forEach(r => {
+      const opt = r.closest('.radio-option, .priority-row');
+      if (opt) opt.style.outline = '';
+      else r.style.outline = '';
+    });
+    return true;
+  }
+
+  // Validate a checkbox group — returns true if at least one checked
+  function checkCheckbox(name) {
+    const checked = document.querySelectorAll(`input[name="${name}"]:checked`);
+    const group = document.querySelector(`input[name="${name}"]`)?.closest('.checkbox-group, .field-group');
+    if (checked.length === 0) {
+      if (group) group.style.outline = '2px solid var(--error)';
+      return false;
+    }
+    if (group) group.style.outline = '';
+    return true;
+  }
+
+  // Validate a <select> by name — returns true if a value is selected
+  function checkSelect(name) {
+    const el = document.querySelector(`select[name="${name}"]`);
+    if (!el) return true;
+    if (!el.value) { el.style.borderColor = 'var(--error)'; return false; }
+    el.style.borderColor = ''; return true;
+  }
+
+  // Validate all rows in a skill grid — highlights unanswered rows red
+  function checkSkillGrid(sectionId, names) {
+    let valid = true;
+    names.forEach(name => {
+      const checked = document.querySelector(`input[name="${name}"]:checked`);
+      const firstEl = document.querySelector(`input[name="${name}"]`);
+      const row = firstEl ? firstEl.closest('.skill-row') : null;
+      if (!checked) {
+        if (row) row.style.background = '#fef2f2';
+        valid = false;
+      } else {
+        if (row) row.style.background = '';
+      }
+    });
+    // Show/hide banner
+    let banner = document.getElementById(sectionId + '-grid-err');
+    if (!banner && !valid) {
+      banner = document.createElement('div');
+      banner.id = sectionId + '-grid-err';
+      banner.style.cssText = 'color:var(--error);font-size:13px;margin-top:8px;padding:10px 14px;background:#fef2f2;border:1px solid #fecaca;border-radius:6px;';
+      banner.textContent = 'Please make a selection for every skill row before continuing.';
+      const card = document.querySelector('#' + sectionId + ' .section-card');
+      if (card) card.appendChild(banner);
+    } else if (banner) {
+      banner.style.display = valid ? 'none' : 'block';
+    }
+    return valid;
+  }
+
+  // Show a section-level error banner
+  function sectionBanner(sectionId, show, msg) {
+    let b = document.getElementById(sectionId + '-top-err');
+    if (!b && show) {
+      b = document.createElement('div');
+      b.id = sectionId + '-top-err';
+      b.style.cssText = 'color:var(--error);font-size:13px;margin-bottom:14px;padding:10px 14px;background:#fef2f2;border:1px solid #fecaca;border-radius:6px;';
+      b.textContent = msg || 'Please complete all required fields before continuing.';
+      const card = document.querySelector('#' + sectionId + ' .section-card');
+      if (card) card.insertBefore(b, card.firstChild);
+    } else if (b) {
+      b.style.display = show ? 'block' : 'none';
+    }
+  }
+
+  // Scroll to first error within a section
+  function scrollFirstError(sectionId) {
+    const sel = [
+      '#' + sectionId + ' .invalid',
+      '#' + sectionId + ' [style*="var(--error)"]',
+      '#' + sectionId + ' .skill-row[style*="fef2f2"]',
+    ].join(', ');
+    const el = document.querySelector(sel);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    else window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── validateAndAdvance — called by every Next button ─────────────────
+  function validateAndAdvance(sectionId, nextId) {
+
+    // ── SECTION 1: Requisition type (handled by goToSection1Next) ────
+
+    // ── SECTION 2: DH Company & Contact ──────────────────────────────
+    if (sectionId === 'section-2') {
+      let ok = true;
+      ['dh-date','dh-company-name','dh-company-address','dh-main-contact',
+       'dh-hiring-manager','dh-hr-contact','dh-maintenance-mgr','dh-billing-contact']
+        .forEach(id => { if (!checkField(id)) ok = false; });
+      if (!checkRadio('dh_po_required')) ok = false;
+      if (!checkRadio('dh_union'))       ok = false;
+      // Conditional: PO number required if "Yes" selected
+      const poConditional = document.getElementById('dh-po-conditional');
+      if (poConditional && poConditional.classList.contains('visible')) {
+        if (!checkField('dh-po-number')) ok = false;
+      }
+      // Conditional: union description required if "Yes" selected
+      const unionConditional = document.getElementById('dh-union-conditional');
+      if (unionConditional && unionConditional.classList.contains('visible')) {
+        if (!checkField('dh-union-desc')) ok = false;
+      }
+      // Show/clear existing error divs
+      ['dh-date','dh-company-name','dh-company-address','dh-main-contact',
+       'dh-hiring-manager','dh-hr-contact','dh-maintenance-mgr','dh-billing-contact'].forEach(id => {
+        const el = document.getElementById(id);
+        const err = document.getElementById(id + '-error');
+        if (err) err.classList.toggle('visible', !!(el && !el.value.trim()));
+      });
+      const poErr = document.getElementById('dh-po-required-error');
+      if (poErr) poErr.classList.toggle('visible', !document.querySelector('input[name="dh_po_required"]:checked'));
+      const unErr = document.getElementById('dh-union-error');
+      if (unErr) unErr.classList.toggle('visible', !document.querySelector('input[name="dh_union"]:checked'));
+      if (!ok) { scrollFirstError('section-2'); return; }
+      showSection(nextId, 20); return;
+    }
+
+    // ── SECTION 3: DH Talent Dimensions ──────────────────────────────
+    if (sectionId === 'section-3-dh') {
+      let ok = true;
+      ['td_drives_values','td_workstyle','td_relationships','td_influence','td_thought_process']
+        .forEach(n => { if (!checkRadio(n)) ok = false; });
+      // Also update existing error divs
+      [{n:'td_drives_values',e:'td-drives-error'},{n:'td_workstyle',e:'td-workstyle-error'},
+       {n:'td_relationships',e:'td-relationships-error'},{n:'td_influence',e:'td-influence-error'},
+       {n:'td_thought_process',e:'td-thought-error'}].forEach(({n,e}) => {
+        const err = document.getElementById(e);
+        if (err) err.classList.toggle('visible', !document.querySelector(`input[name="${n}"]:checked`));
+      });
+      if (!ok) { scrollFirstError('section-3-dh'); return; }
+      showSection(nextId, 30); return;
+    }
+
+    // ── SECTION 4: DH Candidate Fit Dimensions ────────────────────────
+    if (sectionId === 'section-4-dh') {
+      const cnt = document.querySelectorAll('input[name="fit_dimensions"]:checked').length;
+      const err = document.getElementById('fit-dimensions-error');
+      if (cnt < 5) {
+        if (err) err.classList.add('visible');
+        if (err) err.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      if (err) err.classList.remove('visible');
+      showSection(nextId, 40); return;
+    }
+
+    // ── SECTION 5: DH Job/Site Details ───────────────────────────────
+    if (sectionId === 'section-5-dh') {
+      let ok = true;
+      ['s5-machines','s5-job-desc','s5-tech-count','s5-apprentice','s5-specialty-tools']
+        .forEach(id => { if (!checkField(id)) ok = false; });
+      if (!checkCheckbox('s5_maintenance_types')) ok = false;
+      if (!checkRadio('s5_own_tools'))            ok = false;
+      ['priority_electrical','priority_instrumentation','priority_mechanical',
+       'priority_fluidpower','priority_fabrication']
+        .forEach(n => { if (!checkRadio(n)) ok = false; });
+      sectionBanner('section-5-dh', !ok);
+      if (!ok) { scrollFirstError('section-5-dh'); return; }
+      sectionBanner('section-5-dh', false);
+      showSection(nextId, 50); return;
+    }
+
+    // ── SECTION 6: DH Shift/Hours ─────────────────────────────────────
+    if (sectionId === 'section-6-dh') {
+      let ok = true;
+      ['s6-position-name','s6-shift-schedule','s6-hours-per-shift',
+       's6-overtime','s6-pay-range','s6-shift-diff','s6-weekend-ot']
+        .forEach(id => { if (!checkField(id)) ok = false; });
+      sectionBanner('section-6-dh', !ok);
+      if (!ok) { scrollFirstError('section-6-dh'); return; }
+      sectionBanner('section-6-dh', false);
+      showSection(nextId, 55); return;
+    }
+
+    // ── SECTION 7: DH Electrical Skills ──────────────────────────────
+    if (sectionId === 'section-7-dh') {
+      let ok = true;
+      if (!checkField('s7-tech-type')) ok = false;
+      const names = ['s7_elec_0','s7_elec_1','s7_elec_2','s7_elec_3','s7_elec_4',
+        's7_elec_5','s7_elec_6','s7_elec_7','s7_elec_8','s7_elec_9',
+        's7_elec_10','s7_elec_11','s7_elec_12','s7_elec_13','s7_elec_14',
+        's7_elec_15','s7_elec_16','s7_elec_17'];
+      if (!checkSkillGrid('section-7-dh', names)) ok = false;
+      if (!ok) { scrollFirstError('section-7-dh'); return; }
+      showSection(nextId, 62); return;
+    }
+
+    // ── SECTION 8: DH Instrumentation Skills ─────────────────────────
+    if (sectionId === 'section-8-dh') {
+      let ok = true;
+      if (!checkSkillGrid('section-8-dh',
+        ['s8_plc_troubleshooting','s8_plc_programming','s8_hmi','s8_robots'])) ok = false;
+      if (!checkField('s8-brands')) ok = false;
+      const fu = document.getElementById('plc-troubleshooting-followup');
+      if (fu && fu.classList.contains('visible')) {
+        if (!checkRadio('s8_plc_ts_type')) ok = false;
+      }
+      if (!ok) { scrollFirstError('section-8-dh'); return; }
+      showSection(nextId, 68); return;
+    }
+
+    // ── SECTION 9: DH Mechanical Skills ──────────────────────────────
+    if (sectionId === 'section-9-dh') {
+      const ok = checkSkillGrid('section-9-dh',
+        ['s9_basic_mech','s9_intermediate_mech','s9_advanced_mech','s9_diagram',
+         's9_rebuild','s9_corrugated','s9_conveyor','s9_bearings',
+         's9_shafts_seals','s9_gearboxes','s9_cnc']);
+      if (!ok) { scrollFirstError('section-9-dh'); return; }
+      showSection(nextId, 75); return;
+    }
+
+    // ── SECTION 10: DH Fluid Power Skills ────────────────────────────
+    if (sectionId === 'section-10-dh') {
+      const ok = checkSkillGrid('section-10-dh',
+        ['s10_mech_pumps','s10_air_diaphragm','s10_centrifugal',
+         's10_basic_hydraulic','s10_intermediate_hydraulic','s10_advanced_hydraulic','s10_rebuild_hydraulic',
+         's10_basic_pneumatic','s10_intermediate_pneumatic','s10_advanced_pneumatic']);
+      if (!ok) { scrollFirstError('section-10-dh'); return; }
+      showSection(nextId, 82); return;
+    }
+
+    // ── SECTION 11: DH Fabrication ───────────────────────────────────
+    if (sectionId === 'section-11-dh') {
+      const ok = checkSkillGrid('section-11-dh',
+        ['s11_basic_welding','s11_intermediate_welding','s11_advanced_welding',
+         's11_mig','s11_tig','s11_stick','s11_arc']);
+      if (!ok) { scrollFirstError('section-11-dh'); return; }
+      showSection(nextId, 90); return;
+    }
+
+    // ── SECTION 12: DH Miscellaneous Skills ──────────────────────────
+    if (sectionId === 'section-12-dh') {
+      let ok = true;
+      if (!checkSkillGrid('section-12-dh',
+        ['s12_gmp','s12_packaging','s12_food_production'])) ok = false;
+      if (!checkRadio('s12_another_position')) ok = false;
+      if (!ok) { scrollFirstError('section-12-dh'); return; }
+      // Branch is already set by handleAnotherPosition onChange; trigger the button
+      document.getElementById('s12-next-btn').click(); return;
+    }
+
+    // ── POSITION 2 DH: Electrical ────────────────────────────────────
+    if (sectionId === 'section-7b-dh') {
+      let ok = true;
+      if (!checkField('p2-s7-tech-type')) ok = false;
+      if (!checkSkillGrid('section-7b-dh',
+        ['p2_s7_basic_elec','p2_s7_intermediate_elec','p2_s7_advanced_elec',
+         'p2_s7_24v_single','p2_s7_110v_single','p2_s7_480v_three','p2_s7_over_480v',
+         'p2_s7_motor_prof','p2_s7_cabinet_ts','p2_s7_diagram','p2_s7_motors',
+         'p2_s7_servos','p2_s7_vfd','p2_s7_transformers','p2_s7_relays',
+         'p2_s7_io_modules','p2_s7_wiring','p2_s7_sensors'])) ok = false;
+      if (!ok) { scrollFirstError('section-7b-dh'); return; }
+      showSection(nextId, 92); return;
+    }
+
+    // ── POSITION 2 DH: Instrumentation ──────────────────────────────
+    if (sectionId === 'section-8b-dh') {
+      let ok = true;
+      if (!checkSkillGrid('section-8b-dh',
+        ['p2_s8_plc_ts','p2_s8_plc_prog','p2_s8_hmi','p2_s8_robots'])) ok = false;
+      if (!checkField('p2-s8-brands')) ok = false;
+      const fu = document.getElementById('p2-dh-plc-ts-followup');
+      if (fu && fu.classList.contains('visible')) {
+        if (!checkRadio('p2_s8_plc_ts_type')) ok = false;
+      }
+      if (!ok) { scrollFirstError('section-8b-dh'); return; }
+      showSection(nextId, 93); return;
+    }
+
+    // ── POSITION 2 DH: Mechanical ────────────────────────────────────
+    if (sectionId === 'section-9b-dh') {
+      const ok = checkSkillGrid('section-9b-dh',
+        ['p2_s9_basic_mech','p2_s9_intermediate_mech','p2_s9_advanced_mech','p2_s9_diagram',
+         'p2_s9_rebuild','p2_s9_corrugated','p2_s9_conveyor','p2_s9_bearings',
+         'p2_s9_shafts_seals','p2_s9_gearboxes','p2_s9_cnc']);
+      if (!ok) { scrollFirstError('section-9b-dh'); return; }
+      showSection(nextId, 94); return;
+    }
+
+    // ── POSITION 2 DH: Fluid Power ───────────────────────────────────
+    if (sectionId === 'section-10b-dh') {
+      const ok = checkSkillGrid('section-10b-dh',
+        ['p2_s10_mech_pumps','p2_s10_air_diaphragm','p2_s10_centrifugal',
+         'p2_s10_basic_hydraulic','p2_s10_intermediate_hydraulic','p2_s10_advanced_hydraulic','p2_s10_rebuild_hydraulic',
+         'p2_s10_basic_pneumatic','p2_s10_intermediate_pneumatic','p2_s10_advanced_pneumatic']);
+      if (!ok) { scrollFirstError('section-10b-dh'); return; }
+      showSection(nextId, 95); return;
+    }
+
+    // ── POSITION 2 DH: Fabrication ───────────────────────────────────
+    if (sectionId === 'section-11b-dh') {
+      const ok = checkSkillGrid('section-11b-dh',
+        ['p2_s11_basic_welding','p2_s11_intermediate_welding','p2_s11_advanced_welding',
+         'p2_s11_mig','p2_s11_tig','p2_s11_stick','p2_s11_arc']);
+      if (!ok) { scrollFirstError('section-11b-dh'); return; }
+      showSection(nextId, 96); return;
+    }
+
+    // ── POSITION 2 DH: Miscellaneous ─────────────────────────────────
+    if (sectionId === 'section-12b-dh') {
+      const ok = checkSkillGrid('section-12b-dh',
+        ['p2_s12_gmp','p2_s12_packaging','p2_s12_food_production']);
+      if (!ok) { scrollFirstError('section-12b-dh'); return; }
+      showSection(nextId, 98); return;
+    }
+
+    // ── SECTION 13: WFS Company & Contact ────────────────────────────
+    if (sectionId === 'section-13-wfs') {
+      let ok = true;
+      ['wfs-date','wfs-company-name','wfs-company-address','wfs-main-contact',
+       'wfs-hiring-manager','wfs-hr-contact','wfs-maintenance-mgr','wfs-billing-contact']
+        .forEach(id => { if (!checkField(id)) ok = false; });
+      if (!checkRadio('wfs_po_required')) ok = false;
+      if (!checkRadio('wfs_union'))       ok = false;
+      // Conditional: PO number required if "Yes" selected
+      const poConditional = document.getElementById('wfs-po-conditional');
+      if (poConditional && poConditional.classList.contains('visible')) {
+        if (!checkField('wfs-po-number')) ok = false;
+      }
+      // Conditional: union description required if "Yes" selected
+      const unionConditional = document.getElementById('wfs-union-conditional');
+      if (unionConditional && unionConditional.classList.contains('visible')) {
+        if (!checkField('wfs-union-desc')) ok = false;
+      }
+      sectionBanner('section-13-wfs', !ok);
+      if (!ok) { scrollFirstError('section-13-wfs'); return; }
+      sectionBanner('section-13-wfs', false);
+      showSection(nextId, 10); return;
+    }
+
+    // ── SECTION 14: WFS Shift/Hours ───────────────────────────────────
+    if (sectionId === 'section-14-wfs') {
+      let ok = true;
+      ['wfs-position-name','wfs-shift-schedule','wfs-hours-per-shift',
+       'wfs-overtime','wfs-weekend-ot']
+        .forEach(id => { if (!checkField(id)) ok = false; });
+      if (!checkCheckbox('wfs_holidays')) ok = false;
+      sectionBanner('section-14-wfs', !ok);
+      if (!ok) { scrollFirstError('section-14-wfs'); return; }
+      sectionBanner('section-14-wfs', false);
+      showSection(nextId, 22); return;
+    }
+
+    // ── SECTION 15: WFS Electrical Skills ────────────────────────────
+    if (sectionId === 'section-15-wfs') {
+      let ok = true;
+      if (!checkField('s15-tech-type')) ok = false;
+      if (!checkSkillGrid('section-15-wfs',
+        ['s15_basic_elec','s15_intermediate_elec','s15_advanced_elec',
+         's15_24v_single','s15_110v_single','s15_480v_three','s15_over_480v',
+         's15_motor_prof','s15_cabinet_ts','s15_diagram','s15_motors',
+         's15_servos','s15_vfd','s15_transformers','s15_relays',
+         's15_io_modules','s15_wiring','s15_sensors'])) ok = false;
+      const fu = document.getElementById('wfs-plc-ts-followup');
+      if (fu && fu.classList.contains('visible')) {
+        if (!checkRadio('s15_plc_ts_type')) ok = false;
+      }
+      if (!ok) { scrollFirstError('section-15-wfs'); return; }
+      showSection(nextId, 35); return;
+    }
+
+    // ── SECTION 16: WFS Instrumentation Skills ───────────────────────
+    if (sectionId === 'section-16-wfs') {
+      let ok = true;
+      if (!checkSkillGrid('section-16-wfs',
+        ['s16_plc_ts','s16_plc_prog','s16_hmi','s16_robots'])) ok = false;
+      if (!checkField('s16-brands')) ok = false;
+      const fu = document.getElementById('wfs-s16-plc-ts-followup');
+      if (fu && fu.classList.contains('visible')) {
+        if (!checkRadio('s16_plc_ts_type')) ok = false;
+      }
+      if (!ok) { scrollFirstError('section-16-wfs'); return; }
+      showSection(nextId, 45); return;
+    }
+
+    // ── SECTION 17: WFS Mechanical Skills ────────────────────────────
+    if (sectionId === 'section-17-wfs') {
+      const ok = checkSkillGrid('section-17-wfs',
+        ['s17_basic_mech','s17_intermediate_mech','s17_advanced_mech','s17_diagram',
+         's17_rebuild','s17_corrugated','s17_conveyor','s17_bearings',
+         's17_shafts_seals','s17_gearboxes','s17_cnc']);
+      if (!ok) { scrollFirstError('section-17-wfs'); return; }
+      showSection(nextId, 52); return;
+    }
+
+    // ── SECTION 18: WFS Fluid Power Skills ───────────────────────────
+    if (sectionId === 'section-18-wfs') {
+      const ok = checkSkillGrid('section-18-wfs',
+        ['s18_mech_pumps','s18_air_diaphragm','s18_centrifugal',
+         's18_basic_hydraulic','s18_intermediate_hydraulic','s18_advanced_hydraulic','s18_rebuild_hydraulic',
+         's18_basic_pneumatic','s18_intermediate_pneumatic','s18_advanced_pneumatic']);
+      if (!ok) { scrollFirstError('section-18-wfs'); return; }
+      showSection(nextId, 58); return;
+    }
+
+    // ── SECTION 19: WFS Fabrication ───────────────────────────────────
+    if (sectionId === 'section-19-wfs') {
+      const ok = checkSkillGrid('section-19-wfs',
+        ['s19_basic_welding','s19_intermediate_welding','s19_advanced_welding',
+         's19_mig','s19_tig','s19_stick','s19_arc']);
+      if (!ok) { scrollFirstError('section-19-wfs'); return; }
+      showSection(nextId, 65); return;
+    }
+
+    // ── SECTION 20: WFS Miscellaneous Skills ─────────────────────────
+    if (sectionId === 'section-20-wfs') {
+      let ok = true;
+      if (!checkSkillGrid('section-20-wfs',
+        ['s20_gmp','s20_packaging','s20_food_production'])) ok = false;
+      if (!checkRadio('s20_another_position')) ok = false;
+      if (!ok) { scrollFirstError('section-20-wfs'); return; }
+      document.getElementById('s20-next-btn').click(); return;
+    }
+
+    // ── POSITION 2 WFS: Electrical ────────────────────────────────────
+    if (sectionId === 'section-15b-wfs') {
+      let ok = true;
+      if (!checkField('p2-s15-tech-type')) ok = false;
+      if (!checkSkillGrid('section-15b-wfs',
+        ['p2_s15_basic_elec','p2_s15_intermediate_elec','p2_s15_advanced_elec',
+         'p2_s15_24v_single','p2_s15_110v_single','p2_s15_480v_three','p2_s15_over_480v',
+         'p2_s15_motor_prof','p2_s15_cabinet_ts','p2_s15_diagram','p2_s15_motors',
+         'p2_s15_servos','p2_s15_vfd','p2_s15_transformers','p2_s15_relays',
+         'p2_s15_io_modules','p2_s15_wiring','p2_s15_sensors'])) ok = false;
+      if (!ok) { scrollFirstError('section-15b-wfs'); return; }
+      showSection(nextId, 80); return;
+    }
+
+    // ── POSITION 2 WFS: Instrumentation ──────────────────────────────
+    if (sectionId === 'section-16b-wfs') {
+      let ok = true;
+      if (!checkSkillGrid('section-16b-wfs',
+        ['p2_s16_plc_ts','p2_s16_plc_prog','p2_s16_hmi','p2_s16_robots'])) ok = false;
+      if (!checkField('p2-s16-brands')) ok = false;
+      const fu = document.getElementById('p2-wfs-plc-ts-followup');
+      if (fu && fu.classList.contains('visible')) {
+        if (!checkRadio('p2_s16_plc_ts_type')) ok = false;
+      }
+      if (!ok) { scrollFirstError('section-16b-wfs'); return; }
+      showSection(nextId, 83); return;
+    }
+
+    // ── POSITION 2 WFS: Mechanical ────────────────────────────────────
+    if (sectionId === 'section-17b-wfs') {
+      const ok = checkSkillGrid('section-17b-wfs',
+        ['p2_s17_basic_mech','p2_s17_intermediate_mech','p2_s17_advanced_mech','p2_s17_diagram',
+         'p2_s17_rebuild','p2_s17_corrugated','p2_s17_conveyor','p2_s17_bearings',
+         'p2_s17_shafts_seals','p2_s17_gearboxes','p2_s17_cnc']);
+      if (!ok) { scrollFirstError('section-17b-wfs'); return; }
+      showSection(nextId, 85); return;
+    }
+
+    // ── POSITION 2 WFS: Fluid Power ──────────────────────────────────
+    if (sectionId === 'section-18b-wfs') {
+      const ok = checkSkillGrid('section-18b-wfs',
+        ['p2_s18_mech_pumps','p2_s18_air_diaphragm','p2_s18_centrifugal',
+         'p2_s18_basic_hydraulic','p2_s18_intermediate_hydraulic','p2_s18_advanced_hydraulic','p2_s18_rebuild_hydraulic',
+         'p2_s18_basic_pneumatic','p2_s18_intermediate_pneumatic','p2_s18_advanced_pneumatic']);
+      if (!ok) { scrollFirstError('section-18b-wfs'); return; }
+      showSection(nextId, 87); return;
+    }
+
+    // ── POSITION 2 WFS: Fabrication ──────────────────────────────────
+    if (sectionId === 'section-19b-wfs') {
+      const ok = checkSkillGrid('section-19b-wfs',
+        ['p2_s19_basic_welding','p2_s19_intermediate_welding','p2_s19_advanced_welding',
+         'p2_s19_mig','p2_s19_tig','p2_s19_stick','p2_s19_arc']);
+      if (!ok) { scrollFirstError('section-19b-wfs'); return; }
+      showSection(nextId, 88); return;
+    }
+
+    // ── POSITION 2 WFS: Miscellaneous ────────────────────────────────
+    if (sectionId === 'section-20b-wfs') {
+      const ok = checkSkillGrid('section-20b-wfs',
+        ['p2_s20_gmp','p2_s20_packaging','p2_s20_food_production']);
+      if (!ok) { scrollFirstError('section-20b-wfs'); return; }
+      showSection(nextId, 98); return;
+    }
+
+    // Fallback
+    showSection(nextId, 30);
+  }
+
+    // ── Google Sheets submission (called on final submit) ────────────────
   function collectFormData() {
     const data = {};
     document.querySelectorAll('input[type="text"], input[type="date"], textarea').forEach(el => {
@@ -3931,6 +4762,26 @@
     }
   }
 
+  // ── Position 2 DH PLC follow-up toggle ──────────────────────────────
+  function toggleP2DHPLCFollowUp(value) {
+    const el = document.getElementById('p2-dh-plc-ts-followup');
+    if (value === 'Must Have' || value === 'Preference') {
+      el.classList.add('visible');
+    } else {
+      el.classList.remove('visible');
+    }
+  }
+
+  // ── Position 2 WFS PLC follow-up toggle ─────────────────────────────
+  function toggleP2WFSPLCFollowUp(value) {
+    const el = document.getElementById('p2-wfs-plc-ts-followup');
+    if (value === 'Must Have' || value === 'Preference') {
+      el.classList.add('visible');
+    } else {
+      el.classList.remove('visible');
+    }
+  }
+
   // ── Priority grid: enforce unique priority numbers 1-5 ──────────────
   const PRIORITY_SKILLS = ['electrical','instrumentation','mechanical','fluidpower','fabrication'];
 
@@ -3983,7 +4834,44 @@
     });
   }
 
-  // ── Set today's date as default ──────────────────────────────────────
+  // ── Physical Demands validation + submit ─────────────────────────────
+  function validateAndSubmit() {
+    let ok = true;
+    // All dropdowns
+    ['pd_lifting_freq','pd_lifting_weight','pd_carrying_freq','pd_carrying_weight',
+     'pd_pulling_freq','pd_pulling_weight','pd_pushing_freq','pd_pushing_weight',
+     'pd_sitting_pct','pd_standing_pct','pd_walking_pct','pd_jumping_pct',
+     'pd_running_pct','pd_squatting_pct','pd_kneeling_pct','pd_crouching_pct',
+     'pd_bending_pct','pd_turning_pct','pd_crawling_pct',
+     'pd_stairs_pct','pd_ramps_pct','pd_ladders_pct']
+      .forEach(n => { if (!checkSelect(n)) ok = false; });
+    // Radios
+    if (!checkRadio('pd_speaking')) ok = false;
+    if (!checkRadio('pd_hearing'))  ok = false;
+    // Checkbox groups
+    if (!checkCheckbox('pd_surfaces')) ok = false;
+    if (!checkCheckbox('pd_vision'))   ok = false;
+    if (!checkCheckbox('pd_senses'))   ok = false;
+    // Conditionals: "Other" text fields when Other is checked
+    const surfOther = document.getElementById('pd-surfaces-other');
+    if (surfOther && surfOther.classList.contains('visible')) {
+      const el = surfOther.querySelector('input[type="text"]');
+      if (el && !el.value.trim()) { markInvalid(el); ok = false; }
+      else if (el) markValid(el);
+    }
+    const visOther = document.getElementById('pd-vision-other');
+    if (visOther && visOther.classList.contains('visible')) {
+      const el = visOther.querySelector('input[type="text"]');
+      if (el && !el.value.trim()) { markInvalid(el); ok = false; }
+      else if (el) markValid(el);
+    }
+    sectionBanner('section-pd', !ok, 'Please complete all required fields before submitting.');
+    if (!ok) { scrollFirstError('section-pd'); return; }
+    sectionBanner('section-pd', false);
+    submitToGoogleSheets();
+  }
+
+    // ── Set today's date as default ──────────────────────────────────────
   window.addEventListener('DOMContentLoaded', () => {
     const today = new Date().toISOString().split('T')[0];
     const dateField = document.getElementById('dh-date');
