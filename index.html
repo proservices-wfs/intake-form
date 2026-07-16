@@ -311,6 +311,25 @@
     color: var(--navy);
   }
   .btn-submit:hover { background: var(--gold-light); }
+  .btn-submit:disabled,
+  .btn-submit.is-submitting {
+    opacity: 0.65;
+    cursor: not-allowed;
+    background: var(--gold);
+  }
+  .btn-submit.is-submitting::after {
+    content: '';
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    margin-left: 9px;
+    vertical-align: -1px;
+    border: 2px solid rgba(11,31,59,0.35);
+    border-top-color: var(--navy);
+    border-radius: 50%;
+    animation: btnspin 0.6s linear infinite;
+  }
+  @keyframes btnspin { to { transform: rotate(360deg); } }
   .btn-clear {
     background: transparent;
     color: var(--text-muted);
@@ -1320,7 +1339,7 @@
               <input type="radio" name="s8_plc_ts_type" value="Software Access Required"> Software Access Required
             </label>
             <label class="radio-option">
-              <input type="radio" name="s8_plc_ts_type" value="Both"> Both
+              <input type="radio" name="s8_plc_ts_type" value="Both (Hardware Troubleshooting &amp; Software Access Required)"> Both (Hardware Troubleshooting &amp; Software Access Required)
             </label>
           </div>
         </div>
@@ -1926,7 +1945,7 @@
               <input type="radio" name="p2_s8_plc_ts_type" value="Software Access Required"> Software Access Required
             </label>
             <label class="radio-option">
-              <input type="radio" name="p2_s8_plc_ts_type" value="Both"> Both
+              <input type="radio" name="p2_s8_plc_ts_type" value="Both (Hardware Troubleshooting &amp; Software Access Required)"> Both (Hardware Troubleshooting &amp; Software Access Required)
             </label>
           </div>
         </div>
@@ -2505,7 +2524,7 @@
               <input type="radio" name="p2_s16_plc_ts_type" value="Software Access Required"> Software Access Required
             </label>
             <label class="radio-option">
-              <input type="radio" name="p2_s16_plc_ts_type" value="Both"> Both
+              <input type="radio" name="p2_s16_plc_ts_type" value="Both (Hardware Troubleshooting &amp; Software Access Required)"> Both (Hardware Troubleshooting &amp; Software Access Required)
             </label>
           </div>
         </div>
@@ -3110,7 +3129,7 @@
     <div class="nav-row">
       <div class="nav-row-main">
         <button class="btn btn-secondary" id="pd-back-btn" onclick="goBack()">← Back</button>
-        <button class="btn btn-submit" onclick="validateAndSubmit()">Submit Form</button>
+        <button class="btn btn-submit" id="submit-btn" onclick="validateAndSubmit()">Submit Form</button>
       </div>
       <div class="nav-row-clear">
         <button class="btn btn-clear" onclick="clearSection('section-pd')">Clear Section</button>
@@ -3452,7 +3471,7 @@
           <div class="radio-group">
             <label class="radio-option"><input type="radio" name="s15_plc_ts_type" value="Hardware Only"> Hardware Only</label>
             <label class="radio-option"><input type="radio" name="s15_plc_ts_type" value="Software Access Required"> Software Access Required</label>
-            <label class="radio-option"><input type="radio" name="s15_plc_ts_type" value="Both"> Both</label>
+            <label class="radio-option"><input type="radio" name="s15_plc_ts_type" value="Both (Hardware Troubleshooting &amp; Software Access Required)"> Both (Hardware Troubleshooting &amp; Software Access Required)</label>
           </div>
         </div>
         <div class="field-group" style="margin-bottom:0;">
@@ -3528,7 +3547,7 @@
               <input type="radio" name="s16_plc_ts_type" value="Software Access Required"> Software Access Required
             </label>
             <label class="radio-option">
-              <input type="radio" name="s16_plc_ts_type" value="Both"> Both
+              <input type="radio" name="s16_plc_ts_type" value="Both (Hardware Troubleshooting &amp; Software Access Required)"> Both (Hardware Troubleshooting &amp; Software Access Required)
             </label>
           </div>
         </div>
@@ -4699,12 +4718,29 @@
     return data;
   }
 
+  let isSubmitting = false;
+
   async function submitToGoogleSheets() {
+    // Guard: prevent duplicate submissions from repeated button presses
+    if (isSubmitting) return;
+    isSubmitting = true;
+
+    const submitBtn = document.getElementById('submit-btn');
+    const originalBtnText = submitBtn ? submitBtn.textContent : 'Submit Form';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.classList.add('is-submitting');
+      submitBtn.textContent = 'Submitting\u2026';
+    }
+    // Hide any previous error
+    const errEl = document.getElementById('submit-error');
+    if (errEl) errEl.classList.remove('visible');
+
     const data = collectFormData();
     data.submitted_at = new Date().toISOString();
 
     try {
-      const response = await fetch(GOOGLE_SCRIPT_URL, {
+      await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
@@ -4713,8 +4749,16 @@
       document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
       document.getElementById('success-screen').classList.add('active');
       document.getElementById('progress-bar').style.width = '100%';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err) {
-      document.getElementById('submit-error').classList.add('visible');
+      // Re-enable so the user can retry
+      isSubmitting = false;
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('is-submitting');
+        submitBtn.textContent = originalBtnText;
+      }
+      if (errEl) errEl.classList.add('visible');
     }
   }
 
