@@ -4709,11 +4709,27 @@
     // ── Google Sheets submission (called on final submit) ────────────────
   function collectFormData() {
     const data = {};
-    document.querySelectorAll('input[type="text"], input[type="date"], textarea').forEach(el => {
+    // Text-type inputs and textareas
+    document.querySelectorAll('input[type="text"], input[type="date"], input[type="number"], input[type="email"], input[type="tel"], textarea').forEach(el => {
       if (el.name) data[el.name] = el.value;
     });
+    // Checked radio buttons
     document.querySelectorAll('input[type="radio"]:checked').forEach(el => {
       if (el.name) data[el.name] = el.value;
+    });
+    // Dropdown selects
+    document.querySelectorAll('select').forEach(el => {
+      if (el.name) data[el.name] = el.value;
+    });
+    // Checkboxes — multiple checked boxes sharing a name are joined into one value
+    const checkboxGroups = {};
+    document.querySelectorAll('input[type="checkbox"]:checked').forEach(el => {
+      if (!el.name) return;
+      if (!checkboxGroups[el.name]) checkboxGroups[el.name] = [];
+      checkboxGroups[el.name].push(el.value);
+    });
+    Object.keys(checkboxGroups).forEach(name => {
+      data[name] = checkboxGroups[name].join(', ');
     });
     return data;
   }
